@@ -1,0 +1,46 @@
+ec2 machine and enable ssh. https, http, port 8501
+
+AWS+GCP+AI ATS SYSTEM
+
+PART-1 AWS EC2 UBUNTU INSTANCE
+LAUNCH A NEW EC2 INSTANCE
+UBUNTU SERVER 20.04 LTS
+ALLOWING ESSENTIAL PORT ie-8501
+
+PART2 APPLICATION INSTALLATION
+step-1 update & install python 3.7+ and pip
+       sudo apt update && sudo apt install python3 python3-pip python3-venv -y
+step-2 install git 
+sudo apt install git -y
+step-3 install Poppler (for pdf to image)
+install Poppler
+step-4 
+sudo apt install poppler-utils -y
+
+PART-3 SET UP THE ATS APPLICATION
+step-1 - git clone https://
+ls
+step-2 cd application-tracking-system
+step-3 set up a virtual environment
+python3 -m venv venv
+source venv/bin/activate
+step-4 install project dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install google-generativeai
+
+PART-4 AI Gemini setup 
+get Gemini API key from Google cloud platform (GCP)
+go to google cloud console & create project asearch gemini apiaclick on gemini api ----> manage ---->Generative Language API ->credentials->create credentials->get api
+
+PART-5
+Connect AWS ATS application with GCP Gemini AI
+1. add the API Keyto Streamlit Secret
+mkdir -p .streamlit
+vi .streamlit/secret.toml
+
+GOOGLE_API_KEY = "your api key"
+2. Run the Streamlit app
+streamlit run app.py --server.port 8501 --server.enableCORS false
+
+
